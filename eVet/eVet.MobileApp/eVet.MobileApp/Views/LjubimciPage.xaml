@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ViewModels="clr-namespace:eVet.MobileApp.ViewModels" 
+             x:Class="eVet.MobileApp.Views.LjubimciPage">
+
+
+    <ContentPage.BindingContext>
+        <ViewModels:LjubimciViewModel></ViewModels:LjubimciViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+         
+            <Label Text="Ime: "></Label>
+            <Entry Text="{Binding Ime}"></Entry>
+            <Label  TextColor="Red" IsVisible="{Binding ImeValidation}" Text="Polje ljubimac ne smije biti prazno!"></Label>
+            <Label Text="Datum rođenja: "></Label>
+            <DatePicker Date="{Binding DatumRodjenja}"></DatePicker>
+            <Label  TextColor="Red" IsVisible="{Binding DatumRodjenjaValidation}" Text="Odaberite validan datum!"></Label>
+            <Label Text="Rasa: "></Label>
+            <Entry Text="{Binding Rasa}"></Entry>
+            <Label  TextColor="Red" IsVisible="{Binding RasaValidation}" Text="Polje rasa ne smije biti prazno!"></Label>
+            <Label Text="Boja: "></Label>
+            <Entry Text="{Binding Boja}"></Entry>
+            <Label  TextColor="Red" IsVisible="{Binding BojaValidation}" Text="Polje boja ne smije biti prazno"></Label>
+            <Label Text="Mikročip: "></Label>
+            <Entry Text="{Binding Mikrocip}"></Entry>
+            <Label  TextColor="Red" IsVisible="{Binding MikrocipValidation}" Text="Polje mikročip mora imati tacno 15 karaktera"></Label>
+           
+            <Button Text="Sačuvaj" Command="{Binding SnimiCommand}"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ViewModel="clr-namespace:eVet.MobileApp.ViewModels"
+             x:Class="eVet.MobileApp.Views.PlacanjeRacuna">
+    <ContentPage.BindingContext>
+        <ViewModel:PlacanjeRacunaViewModel></ViewModel:PlacanjeRacunaViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand">
+            <Grid HorizontalOptions="Center" Padding="20,20,20,0" ColumnSpacing="20">
+                <Grid.RowDefinitions >
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="50"/>
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackLayout Grid.Row="0" Grid.ColumnSpan="2">
+                    <Entry x:Name="CardNumber" Placeholder="  Unesite broj kartice"  Text="{Binding Kartica.Number}"  ReturnType="Next" 
+                             TextChanged="CardNumber_TextChanged" Completed="CardNumber_Completed"      Keyboard="Keyboard.Numeric"/>
+                    <Label x:Name="ErrorLabel_CardNumber" TextColor="Red" Text="Unesite kreditnu karticu" IsVisible="{Binding ErrorLabel_CardNumber}"></Label>
+                </StackLayout>
+
+
+                <StackLayout  Grid.Row="1" Grid.Column="0">
+                    <Entry x:Name="Month" Placeholder="  MM" Text="{Binding ExpMonth}"  ReturnType="Next" Keyboard="Keyboard.Numeric"
+                      TextChanged="Month_TextChanged"     Completed="Month_Completed"     />
+                    <Label x:Name="ErrorLabel_Month" TextColor="Red" Text="Unesite mjesec isteka kartice" IsVisible="{Binding ErrorLabel_Month}"></Label>
+                </StackLayout>
+
+                <StackLayout  Grid.Row="1" Grid.Column="1">
+                    <Entry x:Name="Year" Placeholder="  YY"  Text="{Binding ExpYear}"   ReturnType="Next"
+                            TextChanged="Year_TextChanged" Completed="Year_Completed"             Keyboard="Keyboard.Numeric"/>
+                    <Label x:Name="ErrorLabel_Year" TextColor="Red" Text="Unesite godinu isteka kartice" IsVisible="{Binding ErrorLabel_Year}"></Label>
+                </StackLayout>
+                <StackLayout Grid.Row="2" Grid.ColumnSpan="2">
+                    <Entry x:Name="Cvv" Placeholder="  Cvv code"  Text="{Binding Kartica.Cvc}" ReturnType="Next" 
+                          TextChanged="Cvv_TextChanged" Completed="Cvv_Completed"    Keyboard="Keyboard.Numeric"/>
+                    <Label x:Name="ErrorLabel_Cvv" TextColor="Red" Text="Unesite CVV" IsVisible="{Binding ErrorLabel_Cvv}"></Label>
+                </StackLayout>
+            </Grid>
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="End">
+                <Button x:Name="Submit_Button" Command="{Binding SubmitCommand}" Margin="5,5,5,5" CornerRadius="5"  Text="Plati"  HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand"/>
+
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

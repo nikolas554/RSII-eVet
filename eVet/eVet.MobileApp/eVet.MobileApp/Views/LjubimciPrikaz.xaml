@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ViewModels="clr-namespace:eVet.MobileApp.ViewModels" xmlns:converter1="clr-namespace:eVet.MobileApp.Converters"
+             x:Class="eVet.MobileApp.Views.LjubimciPrikaz">
+    <ContentPage.BindingContext>
+        <ViewModels:LjubimciPrikazViewModel></ViewModels:LjubimciPrikazViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter1:ImageConverter x:Key="imgConv"></converter1:ImageConverter>
+        </ResourceDictionary>
+
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+
+            <ListView ItemsSource="{Binding LjubimciList}"  ItemSelected="ListView_ItemSelected">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+
+                        <ViewCell>
+
+                            <StackLayout Padding="10,10,0,10">
+                                
+                              
+                                <Grid>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                               
+
+                                    </Grid.ColumnDefinitions>
+
+
+                                    <StackLayout Grid.Row="0" Grid.Column="0">
+                                        <Label Text="Ime" LineBreakMode="NoWrap" FontSize="15" FontAttributes="Bold"></Label>
+                                        <Label Text="{Binding Ime}" LineBreakMode="NoWrap" FontSize="15"></Label>
+                                        <Label Text="Datum rođenja" LineBreakMode="NoWrap" FontSize="15" FontAttributes="Bold"></Label>
+                                        <Label Text="{Binding DatumRodjenja, StringFormat='\{0:dd. MM. yyyy}'}"  LineBreakMode="NoWrap" FontSize="15" ></Label>
+                                        <Label Text="Rasa" LineBreakMode="NoWrap" FontSize="15" FontAttributes="Bold"></Label>
+                                        <Label Text="{Binding Rasa}"  LineBreakMode="NoWrap" FontSize="15"></Label>
+                                        <Label Text="Boja" LineBreakMode="NoWrap" FontSize="15" FontAttributes="Bold"></Label>
+                                        <Label Text="{Binding Boja}"  LineBreakMode="NoWrap" FontSize="15"></Label>
+
+                                    </StackLayout>
+
+
+                                    <StackLayout Grid.Row="0" Grid.Column="1">
+                                        <ContentView >
+                                            <Image  WidthRequest="210" HeightRequest="210" x:Name="Slika" Source="{Binding Slika, Converter={StaticResource imgConv}}" />
+                                        </ContentView>
+                                    </StackLayout>
+
+                                 
+                                   
+
+
+
+                                </Grid>
+                              
+
+
+                            </StackLayout>
+                            
+                            
+                        </ViewCell>
+                        
+                    </DataTemplate>
+                    
+                    
+                </ListView.ItemTemplate>
+                
+                
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

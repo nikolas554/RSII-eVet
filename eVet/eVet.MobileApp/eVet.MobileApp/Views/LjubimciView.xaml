@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="eVet.MobileApp.Views.LjubimciView">
+    <ContentPage.Content>
+        <StackLayout  Padding="10">
+            <Button FontSize="22" Grid.Row="1" Grid.ColumnSpan="2" BackgroundColor="DodgerBlue" HorizontalOptions="FillAndExpand" Clicked="PregledLjubimacaButtonClicked" Text="MOJI LJUBIMCI" FontAttributes="Bold"></Button>
+
+            <Button FontSize="22" Grid.Row="2" Grid.ColumnSpan="2" BackgroundColor="Blue" HorizontalOptions="FillAndExpand" Clicked="DodajLjubimcaButtonClicked" Text="NOVI LJUBIMAC" FontAttributes="Bold"></Button>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

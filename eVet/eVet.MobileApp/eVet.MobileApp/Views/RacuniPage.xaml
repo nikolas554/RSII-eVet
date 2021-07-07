@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ViewModel="clr-namespace:eVet.MobileApp.ViewModels"
+             x:Class="eVet.MobileApp.Views.RacuniPage">
+
+    <ContentPage.BindingContext>
+        <ViewModel:RacuniViewModel></ViewModel:RacuniViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+
+
+            <ListView ItemsSource="{Binding RacuniList}" ItemSelected="Racun_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Margin="3,3,3,3" Padding="30">
+                                <StackLayout Padding="5">
+                                       <Label Text="{Binding ImePrezimeLjubimac}" 
+                                           LineBreakMode="NoWrap" 
+                                           Style="{DynamicResource ListItemTextStyle}" 
+                                           FontSize="16" />
+                                </StackLayout>
+                                <StackLayout Padding="5">
+                                    <Label Text="{Binding DatumIzdavanja, StringFormat='\{0:dd. MM. yyyy HH:mm}'}" 
+                                           LineBreakMode="NoWrap" 
+                                           Style="{DynamicResource ListItemTextStyle}" 
+                                           FontSize="14" />
+                                </StackLayout>
+                                <StackLayout Padding="5">
+                                           <Label Text="{Binding Iznos, StringFormat='{0:F2} KM'}"
+                                           LineBreakMode="NoWrap"
+                                           Style="{DynamicResource ListItemDetailTextStyle}"
+                                           FontSize="12" />
+                                </StackLayout>
+                         
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

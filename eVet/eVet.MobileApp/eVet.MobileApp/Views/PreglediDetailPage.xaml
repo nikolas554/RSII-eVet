@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ViewModels="clr-namespace:eVet.MobileApp.ViewModels"
+             x:Class="eVet.MobileApp.Views.PreglediDetailPage">
+    <ContentPage.BindingContext>
+        <ViewModels:PregledDetailViewModel></ViewModels:PregledDetailViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+
+            <StackLayout Padding="20">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="0">
+                        <Label Text="Ime"></Label>
+                        <Label Text="Datum rođenja"></Label>
+                        <Label Text="Rasa"></Label>
+                        <Label LineBreakMode="WordWrap">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Uredi" TextColor="Blue">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="Uredi_Clicked"></TapGestureRecognizer>
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="1">
+
+                        <Label Text="{Binding Ljubimac.Ime}" FontAttributes="Bold"></Label>
+
+                        <Label Text="{Binding Ljubimac.DatumRodjenja,StringFormat='{0:dd, MMMM, yyyy}'}" FontAttributes="Bold"></Label>
+
+                        <Label Text="{Binding Ljubimac.Rasa}" FontAttributes="Bold"></Label>
+
+
+
+                    </StackLayout>
+
+                </Grid>
+
+
+            </StackLayout>
+            <StackLayout>
+                <ListView ItemsSource="{Binding PregledList}">
+                <ListView.ItemTemplate>
+
+                    <DataTemplate>
+
+                        <ViewCell>
+                            <Grid Padding="20">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+
+
+                                    </Grid.RowDefinitions>
+                             
+
+                                <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="0">
+                                    <Label Text="Vrsta usluge" FontSize="14" FontAttributes="Bold"></Label>
+                                    <Label Text="{Binding VrstaUsluge.Naziv}"  LineBreakMode="NoWrap" FontSize="16"></Label>
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="0">
+                                    <Label Text="Datum" FontSize="14" FontAttributes="Bold"></Label>
+                                        <Label Text="{Binding Datum,StringFormat='{0:dd, MMMM, yyyy}'}"  LineBreakMode="NoWrap" FontSize="16"></Label>
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical" Grid.Row="2" Grid.Column="0">
+                                    <Label Text="Veterinar" FontSize="14" FontAttributes="Bold"></Label>
+                                    <Label Text="{Binding Korisnik.Ime}"  LineBreakMode="NoWrap" FontSize="16"></Label>
+                                </StackLayout>
+                             
+
+                           
+
+                                    <StackLayout Orientation="Vertical" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+
+                                        <Label Text="Ustanovljene dijagnoze" FontSize="14" FontAttributes="Bold"></Label>
+
+
+                                        <ListView ItemsSource="{Binding Ustanovljenas}" RowHeight="30">
+                                            <ListView.ItemTemplate>
+
+                                                <DataTemplate>
+                                                    <ViewCell>
+                                                        <Grid>
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="Auto"></RowDefinition>
+                                                        
+                                                            </Grid.RowDefinitions>
+                                                            <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="0">
+
+                                                                <Label Text="{Binding Dijagnoza.Naziv}"></Label>
+                                                                
+                                                            </StackLayout>
+                                                
+
+
+                                                        </Grid>
+                                                        
+                                                    </ViewCell>
+                                                    
+                                                </DataTemplate>
+                                                
+                                            </ListView.ItemTemplate>
+                                            
+                                        </ListView>
+                                    </StackLayout>
+
+                                    <StackLayout Orientation="Vertical" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
+
+                                        <Label Text="Propisani lijelovi" FontSize="14" FontAttributes="Bold"></Label>
+
+
+                                        <ListView ItemsSource="{Binding LijekoviPregleds}" RowHeight="30">
+                                            <ListView.ItemTemplate>
+
+                                                <DataTemplate>
+                                                    <ViewCell>
+                                                        <Grid>
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="Auto"></RowDefinition>
+
+                                                            </Grid.RowDefinitions>
+                                                            <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="0">
+
+                                                                <Label Text="{Binding Lijek.Naziv}"></Label>
+
+                                                            </StackLayout>
+
+
+
+                                                        </Grid>
+
+                                                    </ViewCell>
+
+                                                </DataTemplate>
+
+                                            </ListView.ItemTemplate>
+
+                                        </ListView>
+                                    </StackLayout>
+
+
+                                </Grid>
+                        </ViewCell>
+
+                    </DataTemplate>
+
+
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

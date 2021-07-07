@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ViewModel="clr-namespace:eVet.MobileApp.ViewModels"
+             x:Class="eVet.MobileApp.Views.RegisterPage">
+    <ContentPage.BindingContext>
+        <ViewModel:RegisterViewModel></ViewModel:RegisterViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Padding="7" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+            <Label Text="Korisničko ime" />
+            <Entry Text="{Binding KorisnickoIme}"></Entry>
+            <Label  TextColor="Red" IsVisible="{Binding KorisnickoimeValidation}" Text="Polje korisnicko ime nije validno!"></Label>
+            <Label Text="Ime" />
+            <Entry Text="{Binding Ime}"></Entry>
+            <Label  TextColor="Red" IsVisible="{Binding ImeValidation}" Text="Polje Ime nije validno!"></Label>
+            <Label Text="Prezime" />
+            <Entry Text="{Binding Prezime}"></Entry>
+            <Label  TextColor="Red" IsVisible="{Binding PrezimeValidation}" Text="Polje prezime nije validni!"></Label>
+            <Label Text="Password" />
+            <Entry Text="{Binding Password}" IsPassword="True"></Entry>
+            <Label  TextColor="Red" IsVisible="{Binding PasswordValidation}" Text="Polje password nije validno!"></Label>
+            <Label Text="Confirm password" />
+            <Entry Text="{Binding ConfirmPassword}" IsPassword="True"></Entry>
+            <Label  TextColor="Red" IsVisible="{Binding ConfirmPasswordValidation}" Text="Polje potvrdi password nije validno!"></Label>
+            <Label Text="Datum rođenja" />
+            <DatePicker Date="{Binding DatumRodjenja}"></DatePicker>
+            <Label  TextColor="Red" IsVisible="{Binding DatumrodjenjaValidation}" Text="Polje Datum rođenja nije validno!"></Label>
+            <Label Text="Mobile" />
+            <Entry Text="{Binding Mobilni}"></Entry>
+            <Label  TextColor="Red" IsVisible="{Binding MobilniValidation}" Text="Polje mobilni nije validno!"></Label>
+
+
+            <Button Command="{Binding Submit}" Text="Registruj se"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

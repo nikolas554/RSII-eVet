@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ViewModel="clr-namespace:eVet.MobileApp.ViewModels" xmlns:converter1="clr-namespace:eVet.MobileApp.Converters"
+             x:Class="eVet.MobileApp.Views.LjubimacUrediPage">
+    <ContentPage.BindingContext>
+          <ViewModel:LjubimacUrediViewModel></ViewModel:LjubimacUrediViewModel> 
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <converter1:ImageConverter x:Key="imgConv"></converter1:ImageConverter>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+
+
+        <StackLayout Padding="10" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+
+            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill" Orientation="Vertical">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                    <ContentView Padding="0,20,0,20" VerticalOptions="FillAndExpand">
+                        <Image x:Name="ProfilnaLj" Source="{Binding Ljubimac.Slika, Converter={StaticResource imgConv}}" VerticalOptions="Center" HeightRequest="160" />
+                    </ContentView>
+                </StackLayout>
+
+                <StackLayout Orientation="Vertical">
+
+                    <Button x:Name="btnSelectPic" Text="Odaberi sliku iz galerije" Clicked="btnSelectPic_Clicked" BackgroundColor="DodgerBlue" TextColor="White" />
+                </StackLayout>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Ime" />
+                <Entry Text="{Binding Ljubimac.Ime}"></Entry>
+                <Label  TextColor="Red" IsVisible="{Binding ImeValidation}" Text="Polje ljubimac ne smije biti prazno!"></Label>
+                <Label Text="Datum rođenja" />
+                <DatePicker Date="{Binding Ljubimac.DatumRodjenja}"></DatePicker>
+                <Label  TextColor="Red" IsVisible="{Binding DatumRodjenjaValidation}" Text="Odaberite validan datum!"></Label>
+                <Label Text="Rasa" />
+                <Entry Text="{Binding Ljubimac.Rasa}"></Entry>
+                <Label  TextColor="Red" IsVisible="{Binding RasaValidation}" Text="Polje rasa ne smije biti prazno!"></Label>
+                <Label Text="Boja" />
+                <Entry Text="{Binding Ljubimac.Boja}"></Entry>
+                <Label  TextColor="Red" IsVisible="{Binding BojaValidation}" Text="Polje boja ne smije biti prazno"></Label>
+
+                <Label Text="Mikročip" />
+                <Entry Text="{Binding Ljubimac.Mikrocip}"></Entry>
+
+
+
+                <Button Text="Sačuvaj" Command="{Binding SacuvajIzmjeneCommand}"></Button>
+            </StackLayout>
+        
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

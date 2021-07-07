@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewModel="clr-namespace:eVet.MobileApp.ViewModels" xmlns:converter1="clr-namespace:eVet.MobileApp.Converters"
+             x:Class="eVet.MobileApp.Views.UrediProfilePage"
+             Title="{Binding Title}">
+    <ContentPage.BindingContext>
+        <viewModel:UrediProfileViewModel></viewModel:UrediProfileViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <converter1:ImageConverter x:Key="imgConv"></converter1:ImageConverter>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        
+        <StackLayout Padding="10" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+
+
+
+            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="Fill" Orientation="Vertical">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                    <ContentView Padding="0,20,0,20" VerticalOptions="FillAndExpand">
+                        <Image x:Name="Profilna" Source="{Binding Korisnik.Slika, Converter={StaticResource imgConv}}" VerticalOptions="Center" HeightRequest="160" />
+                    </ContentView>
+                </StackLayout>
+
+                <StackLayout Orientation="Vertical">
+                   
+                    <Button x:Name="btnSelectPic" Text="Odaberi sliku iz galerije" Clicked="btnSelectPic_Clicked" BackgroundColor="DodgerBlue" TextColor="White" />
+                </StackLayout>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Ime" />
+            <Entry Text="{Binding Korisnik.Ime}"></Entry>
+                <Label  TextColor="Red" IsVisible="{Binding ImeValidation}" Text="Polje ime nije validno!"></Label>
+                <Label Text="Prezime" />
+            <Entry Text="{Binding Korisnik.Prezime}"></Entry>
+                <Label  TextColor="Red" IsVisible="{Binding PrezimeValidation}" Text="Polje prezime nije validno!"></Label>
+                <Label Text="Korisnicko ime" />
+            <Entry Text="{Binding Korisnik.KorisnickoIme}"></Entry>
+                <Label  TextColor="Red" IsVisible="{Binding KorisnickoimeValidation}" Text="Polje korisnicko ime nije validno!"></Label>
+                <Label Text="Datum rođenja" />
+            <DatePicker Date="{Binding Korisnik.DatumRodjenja}"></DatePicker>
+                <Label  TextColor="Red" IsVisible="{Binding DatumrodjenjaValidation}" Text="Polje Datum rođenja nije validno!"></Label>
+                <Label Text="Adresa" />
+            <Entry Text="{Binding Korisnik.Adresa}"></Entry>
+            <Label Text="Telefon" />
+            <Entry Text="{Binding Korisnik.Mobilni}"></Entry>
+                <Label  TextColor="Red" IsVisible="{Binding MobilniValidation}" Text="Polje mobilni nije validno!"></Label>
+                <Label Text="Password" />
+            <Entry Text="{Binding password}" IsPassword="True"></Entry>
+                <Label  TextColor="Red" IsVisible="{Binding PasswordValidation}" Text="Polje password nije validno!"></Label>
+                <Label Text="Confirm password" />
+            <Entry Text="{Binding ConfirmPassword}" IsPassword="True"></Entry>
+                <Label  TextColor="Red" IsVisible="{Binding ConfirmPasswordValidation}" Text="Polje potvrdi password nije validno!"></Label>
+            </StackLayout>
+            <Button Command="{Binding SacuvajIzmjeneCommand}" Text="Sacuvaj"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

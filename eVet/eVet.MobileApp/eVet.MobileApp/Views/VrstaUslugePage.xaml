@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ViewModels="clr-namespace:eVet.MobileApp.ViewModels"
+             x:Class="eVet.MobileApp.Views.VrstaUslugePage">
+    <ContentPage.BindingContext>
+        <ViewModels:VrstaUslugeViewModel></ViewModels:VrstaUslugeViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Preporučene usluge" Padding="10" FontSize="25" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"></Label>
+            <ListView ItemsSource="{Binding VrstaUslugesList}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10">
+                                <Label Text="{Binding Naziv}" 
+                            LineBreakMode="NoWrap" 
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="16" />
+                                <Label Text="{Binding Opis}" 
+                            LineBreakMode="WordWrap" 
+                            Style="{DynamicResource ListItemDetailsTextStyle}" 
+                            FontSize="13" />
+                                <Label FontSize="33">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding Cijena}"></Span>
+                                            <Span Text=" KM"></Span>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                        
+
+
+                            </StackLayout>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

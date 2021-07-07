@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ViewModels="clr-namespace:eVet.MobileApp.ViewModels"
+             x:Class="eVet.MobileApp.Views.RezervacijePage">
+    <ContentPage.BindingContext>
+        <ViewModels:RezervacijeViewModel></ViewModels:RezervacijeViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Padding="12">
+            <Label Text="Datum rezervacije: "></Label>
+            <StackLayout Orientation="Horizontal">
+                <DatePicker Date="{Binding DatumRezervacije}"></DatePicker>
+                <Picker ItemsSource="{Binding Termini}" ItemDisplayBinding="{Binding Naziv}" SelectedItem="{Binding SelectedTermini}"></Picker>
+            </StackLayout>
+            <Label  TextColor="Red" IsVisible="{Binding DatumValidation}" Text="Odabrali ste datum koji je prošao!"></Label>
+            <Label  TextColor="Red" IsVisible="{Binding TerminValidation}" Text="Odaberite validan termin!"></Label>
+            <Label Text="Ljubimac: "></Label>
+            <Picker ItemsSource="{Binding Ljubimci}" ItemDisplayBinding="{Binding Ime}" SelectedItem="{Binding SelectedLjubimac}"></Picker>
+            <Label  TextColor="Red" IsVisible="{Binding LjubimacValidation}" Text="Odaberite validnog ljubimca!"></Label>
+            <Label Text="Vrsta usluge: "></Label>
+            <Picker ItemsSource="{Binding VrstaUsluge}" ItemDisplayBinding="{Binding Naziv}" SelectedItem="{Binding SelectedVrsteUsluga}"></Picker>
+            <Label  TextColor="Red" IsVisible="{Binding VrstaUslugaValidation}" Text="Odaberite validnu vrstu usluge!"></Label>
+            <Label Text="Napomena: "></Label>
+            <Editor Text="{Binding Napomena}" AutoSize="TextChanges" Grid.Row="7" Grid.Column="1"></Editor>
+
+         
+            <Button Text="Rezerviši" Command="{Binding SnimiCommand}"></Button>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
