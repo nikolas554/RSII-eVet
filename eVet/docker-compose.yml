@@ -20,7 +20,7 @@ services:
     environment:
       - ConnectionStrings:eVet=Server=evet-sql,1433;Database=150131;User=sa;Password=QWElkj132!;ConnectRetryCount=0
     ports:
-      - 5000:80
+      - 6670:80
     networks:
       - evetnet      
     links:
